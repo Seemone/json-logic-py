@@ -312,6 +312,25 @@ def _method(obj, method, args=[]):
         return method(*args)
     return method
 
+def dictify(*args):
+    """
+    Transforms a list of arguments a,b,c,d into a dictonary { a: b, c: d }
+    It is useful to perform transformations on complex objects
+
+    Example:
+    {"dictify": ["user",{"var":"currentuser"},"group",{"var":"groupname"}]}
+    turns
+    {
+        "currentuser": "Alice",
+        "groupname": "Goodpeople"
+    }
+    into
+    {
+        "user": "Alice",
+        "group": "Goodpeople"
+    }
+    """
+    return dict(zip(*[iter([*args])]*2))
 
 _common_operations = {
     '==': _equal_to,
@@ -336,7 +355,8 @@ _common_operations = {
     'min': _minimal,
     'max': _maximal,
     'merge': _merge,
-    'method': _method
+    'method': _method,
+    'dictify': _dictify
 }
 
 
