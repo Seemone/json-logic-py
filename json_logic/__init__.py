@@ -312,7 +312,7 @@ def _method(obj, method, args=[]):
         return method(*args)
     return method
 
-def dictify(*args):
+def _dictify(*args):
     """
     Transforms a list of arguments a,b,c,d into a dictonary { a: b, c: d }
     It is useful to perform transformations on complex objects
